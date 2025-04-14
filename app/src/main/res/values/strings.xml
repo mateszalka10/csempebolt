@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">CsempeBolt</string>
+    <string name="BText">Bejelentkezés</string>
+    <string name="BejelentkezesGomb">Bejelentkezés</string>
+    <string name="BRegis">Regisztrálok</string>
+    <string name="RSzoveg">Regisztráció</string>
+    <string name="RGombRegiszt">Regisztrálok</string>
+    <string name="RGombMegse">Mégse</string>
+    <string name="Rjelszo">Jelszó</string>
+    <string name="RNev">Név</string>
+    <string name="RCim">Cím</string>
+    <string name="RTel">Tel.</string>
+    <string name="REmail">E-mail</string>
+    <string name="Vendeg">Vendég</string>
+    <string name="email">E-mail</string>
+    <string name="google">Google</string>
+    <string name="jelszo">jelszó</string>
+    <string name="csempe3">Barna színű és márványutánzatú csempe, 8,5 mm vastag, 20x60cm, fényes felülettel. Csak belső használatra alkalmas. Nagy és véletlenszerű eltérésekkel a színárnyalatban, a felületszerkezetben és a mintában.</string>
+    <string name="csempe1">Fagyállló. Padló barna színben mérete 29,8x29,8 cm vastagsága 8 mm fényes felülettel. Beltérbe és kültérbe is alkalmas. PEI 4 – nagy ellenállás. Rako készítette.</string>
+    <string name="csempe2">Burkolat kék színben márványutánzatban mérete 25x33 cm vastagsága 7 mm fényes felülettel. Csak beltérbe alkalmas.</string>
+    <string name="csempe4">Fagyállló. Padló barna színben fautánzatban vastagsága 7 mm matt felülettel. Beltérbe és kültérbe is alkalmas. Nagy és véletlenszerű eltérésekkel a színárnyalatban, a felületi textúrában és a rajzban. Alkalmas a konyhába, irodába.</string>
+</resources>

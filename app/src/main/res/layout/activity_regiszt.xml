@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisztActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisztActivity"
+    tools:ignore="ScrollViewSize">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/RSzoveg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.046" />
+
+    <EditText
+        android:id="@+id/REmail"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/REmail"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RNev"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/RTel"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/RTel"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RJelszo"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/RCim"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/RCim"
+        android:importantForAutofill="no"
+        android:inputType="textPostalAddress|textMultiLine"
+        android:maxLines="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RTel"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/RNev"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:hint="@string/RNev"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/RJelszo"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/Rjelszo"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/REmail"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="Autofill" />
+
+    <Button
+        android:id="@+id/RGombRegiszt"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:onClick="RRegiszt"
+        android:text="@string/RGombRegiszt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RCim"
+        app:layout_constraintVertical_bias="0.111" />
+
+    <Button
+        android:id="@+id/RGombMegse"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:onClick="RMegse"
+        android:text="@string/RGombMegse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RCim"
+        app:layout_constraintVertical_bias="0.111" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

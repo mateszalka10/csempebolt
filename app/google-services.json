@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "417475845793",
+    "project_id": "csembebolt",
+    "storage_bucket": "csembebolt.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417475845793:android:ac131ba6842fb8c736dae0",
+        "android_client_info": {
+          "package_name": "com.example.csempebolt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417475845793-5f0lu7mv195oo9mk7v656bmi7gvg94uo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.csempebolt",
+            "certificate_hash": "170fd3225a528978a76900faf8101948ee745fca"
+          }
+        },
+        {
+          "client_id": "417475845793-pdj6ehj99tscbbp2r18vivuhlcdbg406.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAf2ja1ACyOrXSw5lgoO-zp2F04OFhsNCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417475845793-pdj6ehj99tscbbp2r18vivuhlcdbg406.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
