@@ -27,16 +27,16 @@
     <string name="kereses">Keresés</string>
 
     <string-array name="csempe_nevek">
-        <item>csempe1</item>
-        <item>csempe2</item>
-        <item>csempe3</item>
-        <item>csempe4</item>
+        <item>Barna Márvány csempe</item>
+        <item>Barna konyhai csempe</item>
+        <item>kék multifunkcionális csempe</item>
+        <item>Barna fa mintás irodai/konyhai csempe</item>
     </string-array>
     <string-array name="csempe_leírások">
-        <item>csempe11</item>
-        <item>csempe22</item>
-        <item>csempe33</item>
-        <item>csempe44</item>
+        <item>Barna színű és márványutánzatú csempe, 8,5 mm vastag, 20x60cm, fényes felülettel. Csak belső használatra alkalmas. Nagy és véletlenszerű eltérésekkel a színárnyalatban, a felületszerkezetben és a mintában.    </item>
+        <item>Fagyállló. Padló barna színben mérete 29,8x29,8 cm vastagsága 8 mm fényes felülettel. Beltérbe és kültérbe is alkalmas. PEI 4 – nagy ellenállás. Rako készítette.</item>
+        <item>Burkolat kék színben márványutánzatban mérete 25x33 cm vastagsága 7 mm fényes felülettel. Csak beltérbe alkalmas.</item>
+        <item>Fagyállló. Padló barna színben fautánzatban vastagsága 7 mm matt felülettel. Beltérbe és kültérbe is alkalmas. Nagy és véletlenszerű eltérésekkel a színárnyalatban, a felületi textúrában és a rajzban. Alkalmas a konyhába, irodába.</item>
     </string-array>
     <array name="csempe_kepek">
         <item>@drawable/fineza_electra_barna</item>
