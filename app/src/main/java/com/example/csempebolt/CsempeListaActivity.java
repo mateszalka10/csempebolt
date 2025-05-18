@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.csempebolt.R;
 
 
@@ -33,7 +35,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -116,9 +120,10 @@ public class CsempeListaActivity extends AppCompatActivity {
         mItemList.clear();
 
         //mItems.whereEqualTo()....
-        mItems.orderBy("name").limit(querylimit).get().addOnSuccessListener(queryDocumentSnapshots -> {
+        mItems.orderBy("cartedCount", Query.Direction.DESCENDING).limit(querylimit).get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (QueryDocumentSnapshot document : queryDocumentSnapshots){
                 ShoppingItem item = document.toObject(ShoppingItem.class);
+                item.setId(document.getId());
                 mItemList.add(item);
             }
             if (mItemList.size()==0){
@@ -129,6 +134,19 @@ public class CsempeListaActivity extends AppCompatActivity {
             mAdapter.notifyDataSetChanged();
         });
     }
+
+    public void DeleteItem(ShoppingItem item) {
+        DocumentReference ref = mItems.document(item._getId());
+
+        ref.delete().addOnSuccessListener(success -> {
+                    Log.d(TAG, "Sikeres törlés: " + item._getId());
+        })
+                .addOnFailureListener(failure -> {
+                    Toast.makeText(this,"Csempe " +item._getId()+ "sikertelen törlése", Toast.LENGTH_LONG).show();
+                });
+        queryData();
+    }
+
 
     private void intializeData() {
         String[] itemsList = getResources().getStringArray(R.array.csempe_nevek);
@@ -143,7 +161,8 @@ public class CsempeListaActivity extends AppCompatActivity {
                     itemsList[i],
                     itemsInfo[i],
                     itemsPrice[i],
-                    itemsImageResource.getResourceId(i,0)));
+                    itemsImageResource.getResourceId(i,0),
+                    0));
         }
 
         itemsImageResource.recycle();
@@ -219,7 +238,7 @@ public class CsempeListaActivity extends AppCompatActivity {
 
 
     }
-    public void updateAlertIcon() {
+    public void updateAlertIcon(ShoppingItem item) {
         cartItems = (cartItems+1);
         if (0<cartItems){
             contentTextView.setText(String.valueOf(cartItems));
@@ -227,6 +246,12 @@ public class CsempeListaActivity extends AppCompatActivity {
             contentTextView.setText("");
         }
         blueCircle.setVisibility((cartItems > 0) ? VISIBLE : GONE);
+
+        mItems.document(item._getId()).update("cartedCount",item.getCartedCount()+1)
+                .addOnFailureListener(failure -> {
+                   Toast.makeText(this, "Csempe " +item._getId()+ "sikertelen frissítés",Toast.LENGTH_LONG).show();
+                });
+        queryData();
     }
 
     @Override

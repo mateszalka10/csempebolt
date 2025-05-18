@@ -102,14 +102,7 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
             mPriceText= itemView.findViewById(R.id.ar);
             mItemImage= itemView.findViewById(R.id.termekKep);
 
-            itemView.findViewById(R.id.kosar_gomb).setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    Log.d("Activity", "Add to card clicked!");
-                    ((CsempeListaActivity)mContext).updateAlertIcon();
-                }
-            });
         }
 
         public void bindTo(ShoppingItem currentItem) {
@@ -118,6 +111,8 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
             mPriceText.setText(currentItem.getPrice());
 
             Glide.with(mContext).load(currentItem.getImageResource()).into(mItemImage);
+            itemView.findViewById(R.id.kosar_gomb).setOnClickListener(v -> {((CsempeListaActivity)mContext).updateAlertIcon(currentItem);});
+            itemView.findViewById(R.id.torles).setOnClickListener(view -> ((CsempeListaActivity)mContext).DeleteItem(currentItem));
         }
     };
 
