@@ -25,6 +25,7 @@
     <string name="beallitasok">Beállítások</string>
     <string name="kosar">Kosár</string>
     <string name="kereses">Keresés</string>
+    <string name="torles">törlés</string>
 
     <string-array name="csempe_nevek">
         <item>Barna Márvány csempe</item>

@@ -3,6 +3,10 @@ package com.example.csempebolt;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,8 +29,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -43,6 +52,10 @@ public class CsempeListaActivity extends AppCompatActivity {
     private TextView contentTextView;
     private int cartItems = 0;
     private boolean viewRow = true;
+
+    private FirebaseFirestore mFirestore;
+    private CollectionReference mItems;
+    private int querylimit=10;
 
 
     @Override
@@ -70,7 +83,51 @@ public class CsempeListaActivity extends AppCompatActivity {
         mAdapter = new ShoppingItemAdapter(this, mItemList);
         mRecyclerView.setAdapter(mAdapter);
 
-        intializeData();
+        mFirestore = FirebaseFirestore.getInstance();
+        mItems = mFirestore.collection("Items");
+
+        queryData();
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_POWER_CONNECTED);
+        filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+        this.registerReceiver(powerRecevier, filter);
+
+    }
+
+    BroadcastReceiver powerRecevier = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action == null) return;
+            switch (action) {
+                case Intent.ACTION_POWER_CONNECTED:
+                    querylimit = 10;
+                    break;
+                case Intent.ACTION_POWER_DISCONNECTED:
+                    querylimit = 2;
+                    break;
+            }
+            queryData();;
+        }
+    };
+
+    private void queryData() {
+        mItemList.clear();
+
+        //mItems.whereEqualTo()....
+        mItems.orderBy("name").limit(querylimit).get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (QueryDocumentSnapshot document : queryDocumentSnapshots){
+                ShoppingItem item = document.toObject(ShoppingItem.class);
+                mItemList.add(item);
+            }
+            if (mItemList.size()==0){
+                intializeData();
+                queryData();
+            }
+
+            mAdapter.notifyDataSetChanged();
+        });
     }
 
     private void intializeData() {
@@ -79,14 +136,18 @@ public class CsempeListaActivity extends AppCompatActivity {
         String[] itemsPrice= getResources().getStringArray(R.array.csempe_arak);
         TypedArray itemsImageResource = getResources().obtainTypedArray(R.array.csempe_kepek);
 
-        mItemList.clear();
+        // mItemList.clear();
 
         for (int i=0;i<itemsList.length;i++){
-            mItemList.add(new ShoppingItem(itemsList[i], itemsInfo[i], itemsPrice[i],itemsImageResource.getResourceId(i,0)));
+            mItems.add(new ShoppingItem(
+                    itemsList[i],
+                    itemsInfo[i],
+                    itemsPrice[i],
+                    itemsImageResource.getResourceId(i,0)));
         }
 
         itemsImageResource.recycle();
-        mAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -166,5 +227,11 @@ public class CsempeListaActivity extends AppCompatActivity {
             contentTextView.setText("");
         }
         blueCircle.setVisibility((cartItems > 0) ? VISIBLE : GONE);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(powerRecevier);
     }
 }

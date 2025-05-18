@@ -14,7 +14,7 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
+        multiDexEnabled;
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -52,4 +52,6 @@ dependencies {
     implementation(libs.cardview)
     implementation (libs.glide.v4160)
     annotationProcessor (libs.compiler)
+    implementation(libs.firebase.firestore)
+    implementation(libs.multidex)
 }

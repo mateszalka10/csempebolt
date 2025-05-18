@@ -4,7 +4,10 @@ public class ShoppingItem {
     private String name;
     private String info;
     private String price;
-    private final int imageResource;
+    private int imageResource;
+
+    public ShoppingItem() {
+    }
 
     public ShoppingItem(String name, String info, String price, int imageResource) {
         this.imageResource = imageResource;
