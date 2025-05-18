@@ -3,12 +3,15 @@ package com.example.csempebolt;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -60,7 +63,8 @@ public class CsempeListaActivity extends AppCompatActivity {
     private FirebaseFirestore mFirestore;
     private CollectionReference mItems;
     private int querylimit=10;
-
+    private AlarmManager mAlarmManager;
+private NotificationHandler mNotificationHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +101,10 @@ public class CsempeListaActivity extends AppCompatActivity {
         filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         this.registerReceiver(powerRecevier, filter);
 
+        mNotificationHandler = new NotificationHandler(this);
+        mAlarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        setmAlarmManager();
     }
 
     BroadcastReceiver powerRecevier = new BroadcastReceiver() {
@@ -145,6 +153,7 @@ public class CsempeListaActivity extends AppCompatActivity {
                     Toast.makeText(this,"Csempe " +item._getId()+ "sikertelen törlése", Toast.LENGTH_LONG).show();
                 });
         queryData();
+        mNotificationHandler.cancel();
     }
 
 
@@ -251,6 +260,7 @@ public class CsempeListaActivity extends AppCompatActivity {
                 .addOnFailureListener(failure -> {
                    Toast.makeText(this, "Csempe " +item._getId()+ "sikertelen frissítés",Toast.LENGTH_LONG).show();
                 });
+        mNotificationHandler.send(item.getName());
         queryData();
     }
 
@@ -258,5 +268,15 @@ public class CsempeListaActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(powerRecevier);
+    }
+    private void setmAlarmManager() {
+        long repeatInterval = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
+        long triggerTime = SystemClock.elapsedRealtime() + repeatInterval;
+        Intent intent = new Intent(this, AlarmManager.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0 , intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        mAlarmManager.setInexactRepeating(
+                AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerTime, repeatInterval, pendingIntent);
+
+        //mAlarmManager.cancel(pendingIntent);
     }
 }
