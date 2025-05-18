@@ -45,4 +45,11 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
     implementation(libs.play.services.auth)
+
+    implementation(libs.recyclerview)
+    implementation(libs.recyclerview.selection)
+    implementation(libs.glide)
+    implementation(libs.cardview)
+    implementation (libs.glide.v4160)
+    annotationProcessor (libs.compiler)
 }

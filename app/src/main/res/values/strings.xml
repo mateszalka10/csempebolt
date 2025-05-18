@@ -19,4 +19,35 @@
     <string name="csempe1">Fagyállló. Padló barna színben mérete 29,8x29,8 cm vastagsága 8 mm fényes felülettel. Beltérbe és kültérbe is alkalmas. PEI 4 – nagy ellenállás. Rako készítette.</string>
     <string name="csempe2">Burkolat kék színben márványutánzatban mérete 25x33 cm vastagsága 7 mm fényes felülettel. Csak beltérbe alkalmas.</string>
     <string name="csempe4">Fagyállló. Padló barna színben fautánzatban vastagsága 7 mm matt felülettel. Beltérbe és kültérbe is alkalmas. Nagy és véletlenszerű eltérésekkel a színárnyalatban, a felületi textúrában és a rajzban. Alkalmas a konyhába, irodába.</string>
+    <string name="termek_leiras">termék_leírás</string>
+    <string name="kosarba">Kosárba</string>
+    <string name="kijelentkezes">Kijelentkezés</string>
+    <string name="beallitasok">Beállítások</string>
+    <string name="kosar">Kosár</string>
+    <string name="kereses">Keresés</string>
+
+    <string-array name="csempe_nevek">
+        <item>csempe1</item>
+        <item>csempe2</item>
+        <item>csempe3</item>
+        <item>csempe4</item>
+    </string-array>
+    <string-array name="csempe_leírások">
+        <item>csempe11</item>
+        <item>csempe22</item>
+        <item>csempe33</item>
+        <item>csempe44</item>
+    </string-array>
+    <array name="csempe_kepek">
+        <item>@drawable/fineza_electra_barna</item>
+        <item>@drawable/multi_hawai_barna</item>
+        <item>@drawable/multi_laura_kek</item>
+        <item>@drawable/multi_salem_barna</item>
+    </array>
+    <array name="csempe_arak">
+        <item>1000Ft/db</item>
+        <item>1250Ft/db</item>
+        <item>100Ft/db</item>
+        <item>2000Ft/db</item>
+    </array>
 </resources>

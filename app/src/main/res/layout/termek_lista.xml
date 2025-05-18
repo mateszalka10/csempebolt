@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/termekKep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            />
+        <TextView
+            android:id="@+id/termekNev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/termekKep"
+            android:padding="8dp"
+
+
+
+            />
+        <TextView
+            android:id="@+id/leiras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/termekNev"
+            android:padding="8dp"
+            android:text="@string/termek_leiras"
+
+            />
+
+        <TextView
+            android:id="@+id/ar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/leiras"
+            android:layout_marginBottom="12dp"
+            android:padding="8dp"
+            android:textColor="@color/blue"
+            android:layout_centerHorizontal="true"
+            />
+        <Button
+            android:id="@+id/kosar_gomb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ar"
+            android:text="@string/kosarba"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+
+
+
+
+
+</androidx.cardview.widget.CardView>
